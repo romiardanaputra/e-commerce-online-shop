@@ -22,10 +22,10 @@ export default {
 
   daisyui: {
     themes: false,
-    darkTheme: "dark",
+    darkTheme: false,
     base: true,
     styled: true,
-    utlis: true,
+    utils: true,
     prefix: "",
     logs: true,
     themeRoot: ":root",

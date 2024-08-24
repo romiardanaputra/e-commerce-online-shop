@@ -11,16 +11,19 @@ import { cn } from '@/lib/utils'
 
 import { productDataProps } from '@/app/(route)/detail/index.props'
 import Image from 'next/image'
+import { landingCategoryDataProps } from '@/app/index.props'
 
 export type CarouselComponentProps = {
   orientation: 'horizontal' | 'vertical' | undefined
   usedAt?: string
-  productData: productDataProps[]
+  productData?: productDataProps[]
+  landingCategoryData?: landingCategoryDataProps[]
 }
 const CarouselComponent: React.FC<CarouselComponentProps> = ({
   orientation,
   usedAt,
-  productData
+  productData,
+  landingCategoryData
 }) => {
   return (
     <>
@@ -36,7 +39,7 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({
           <CarouselContent
             className={cn(orientation === 'vertical' ? 'h-96' : '')}
           >
-            {productData.map((data, index) => (
+            {productData?.map((data, index) => (
               <CarouselItem
                 key={index}
                 className={cn(
@@ -56,6 +59,32 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({
                         quality={100}
                         className='absolute aspect-auto size-full rounded-lg bg-neutral-500 object-cover'
                       />
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+            {landingCategoryData?.map((data, idx) => (
+              <CarouselItem
+                key={idx}
+                className={cn(
+                  usedAt === 'home'
+                    ? `basis-1/2 sm:basis-1/4 md:basis-1/5 lg:basis-1/6`
+                    : `basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/4 ${orientation === 'vertical' ? 'xl:basis-1/2' : ''}`
+                )}
+              >
+                <div className='p-1'>
+                  <Card className='flex h-40 items-center justify-center'>
+                    <CardContent className='flex aspect-square size-full flex-col items-center justify-center gap-4 p-6'>
+                      <Image
+                        src={`/images/landing/landing-category-${data.img}.webp`}
+                        width={400}
+                        height={400}
+                        alt={data.name}
+                        quality={100}
+                        className='aspect-square size-12 rounded-full object-contain'
+                      />
+                      <p className='text-center font-medium'>{data.name}</p>
                     </CardContent>
                   </Card>
                 </div>

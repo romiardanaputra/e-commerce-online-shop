@@ -37,7 +37,7 @@ const Navbar = () => {
                 <Link href='/'>Reward</Link>
               </li>
               <li>
-                <Link href='/'>Sign Up</Link>
+                <Link href='/sign-up'>Sign Up</Link>
               </li>
             </ul>
             <Button>Login</Button>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 <Link href='/'>Reward</Link>
               </li>
               <li>
-                <Link href='/'>Sign Up</Link>
+                <Link href='/sign-up'>Sign Up</Link>
               </li>
             </ul>
           </SheetHeader>

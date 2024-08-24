@@ -1,20 +1,18 @@
 import Category from '@/components/category'
 import Hero from '@/components/hero'
-import Navbar from '@/components/navbar'
 import ProductList from '@/components/product'
-import Image from 'next/image'
+import { landingCardData, landingCategoryData } from '@/app/index.data'
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
-      <div className='overflow-x-hidden xl:container'>
-        <Navbar />
+      <div className='overflow-x-hidden'>
         <Hero />
-        <Category />
-        <ProductList />
+        <Category landingCategoryData={landingCategoryData} />
+        <ProductList landingCardData={landingCardData} />
       </div>
     </>
   )
 }
 
-export default Home
+export default HomePage

@@ -11,8 +11,7 @@ import { productContent } from './_data/index.data'
 const DetailProductPage = () => {
   return (
     <>
-      <div className='overflow-x-hidden sm:container'>
-        <Navbar />
+      <div className='overflow-x-hidden'>
         <div className='min-h-screen px-6'>
           <BreadcrumbComponent />
           <PreviewProductComponent productData={productData} />

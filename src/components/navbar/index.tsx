@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import {
   Sheet,
@@ -11,6 +14,7 @@ import { IconMenu2 } from '@tabler/icons-react'
 import { Button } from '../ui/button'
 
 const Navbar = () => {
+  const pathname = usePathname()
   return (
     <>
       <Sheet>
@@ -36,11 +40,18 @@ const Navbar = () => {
               <li>
                 <Link href='/'>Reward</Link>
               </li>
-              <li>
-                <Link href='/sign-up'>Sign Up</Link>
-              </li>
+
+              {pathname !== '/sign-up' && pathname !== '/login' && (
+                <li>
+                  <Link href='/sign-up'>Sign Up</Link>
+                </li>
+              )}
             </ul>
-            <Button>Login</Button>
+            {pathname !== '/sign-up' && pathname !== '/login' && (
+              <Link href='/login'>
+                <Button>Login</Button>
+              </Link>
+            )}
           </div>
         </div>
 

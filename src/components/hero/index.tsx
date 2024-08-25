@@ -11,7 +11,7 @@ const Hero = () => {
           height={256}
           priority
           quality={100}
-          className='aspect-auto size-full rounded-md object-cover object-left'
+          className='aspect-video size-full rounded-md object-cover object-left'
         />
       </div>
     </>

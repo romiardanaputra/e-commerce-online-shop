@@ -20,14 +20,17 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
+import React from 'react'
+import { cn } from '@/lib/utils'
 
 type CustomFieldProps = {
   fieldName: string
   label: string
-  description: string
+  description?: string
   control: Control<any>
   fieldType: FieldType
   placeholder: string
+  className?: string
 }
 
 type RenderFieldProps = {
@@ -82,32 +85,34 @@ const RenderField = ({ field, props }: RenderFieldProps) => {
 }
 
 const CustomField = (props: CustomFieldProps) => {
-  const { control, fieldName, label, description, fieldType } = props
+  const { control, fieldName, label, description, fieldType, className } = props
   return (
     <>
-      <FormField
-        control={control}
-        name={fieldName}
-        render={({ field }) => (
-          <FormItem>
-            {fieldType !== FieldType.CHECKBOX && label && (
-              <FormLabel>{label}</FormLabel>
-            )}
+      <div className={cn('w-full', className)}>
+        <FormField
+          control={control}
+          name={fieldName}
+          render={({ field }) => (
+            <FormItem>
+              {fieldType !== FieldType.CHECKBOX && label && (
+                <FormLabel>{label}</FormLabel>
+              )}
 
-            {fieldType === FieldType.RADIO && description && (
-              <FormDescription>{description}</FormDescription>
-            )}
-            <FormControl>
-              <RenderField field={field} props={props} />
-            </FormControl>
+              {fieldType === FieldType.RADIO && description && (
+                <FormDescription>{description}</FormDescription>
+              )}
+              <FormControl>
+                <RenderField field={field} props={props} />
+              </FormControl>
 
-            {fieldType !== FieldType.RADIO && description && (
-              <FormDescription>{description}</FormDescription>
-            )}
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+              {fieldType !== FieldType.RADIO && description && (
+                <FormDescription>{description}</FormDescription>
+              )}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
     </>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import { Form } from '@/components/ui/form'
@@ -9,15 +9,7 @@ import CustomField from '@/components/form/CustomField'
 import { FieldType } from '@/components/form/index.enum'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-
-const loginFormSchema = z.object({
-  email: z.string().trim().email({
-    message: 'Email must be valid.'
-  }),
-  password: z.string().trim().min(6, {
-    message: 'Password must be at least 6 characters.'
-  })
-})
+import { loginFormSchema } from '@/lib/validation/loginValidation'
 
 const LoginForm = () => {
   const onLoginSubmit = async (values: z.infer<typeof loginFormSchema>) => {

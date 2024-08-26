@@ -10,29 +10,11 @@ import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import CustomField from '@/components/form/CustomField'
 import { FieldType } from '@/components/form/index.enum'
-
-const formSchema = z.object({
-  fullName: z.string().trim().min(2, {
-    message: 'Full Name must be at least 2 characters.'
-  }),
-  email: z.string().trim().toLowerCase().email({
-    message: 'Email must be valid.'
-  }),
-  password: z.string().min(6, {
-    message: 'Password must be at least 6 characters.'
-  }),
-  storeOpen: z.boolean(),
-  shopName: z.string().min(2, {
-    message: 'Shop Name must be at least 2 characters.'
-  }),
-  shopCategory: z.string({
-    message: 'Shop Category must be at least 2 characters.'
-  })
-})
+import { registerFormSchema } from '@/lib/validation/registerValidation'
 
 const SignUpForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof registerFormSchema>>({
+    resolver: zodResolver(registerFormSchema),
     defaultValues: {
       fullName: '',
       email: '',
@@ -43,7 +25,7 @@ const SignUpForm = () => {
     }
   })
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof registerFormSchema>) => {
     console.log(values)
   }
   return (

@@ -9,7 +9,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 
-import { productDataProps } from '@/app/(route)/detail/index.props'
+import { productDataProps } from '@/app/(route)/(user)/detail/index.props'
 import Image from 'next/image'
 import { landingCategoryDataProps } from '@/app/index.props'
 

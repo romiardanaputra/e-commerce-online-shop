@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/select'
 import React from 'react'
 import { cn } from '@/lib/utils'
+import { Textarea } from '../ui/textarea'
 
 type CustomFieldProps = {
   fieldName: string
@@ -44,7 +45,9 @@ const RenderField = ({ field, props }: RenderFieldProps) => {
   switch (fieldType) {
     case FieldType.INPUT:
       return <Input placeholder={placeholder} {...field} />
-      break
+
+    case FieldType.TEXTAREA:
+      return <Textarea placeholder={placeholder} {...field} />
 
     case FieldType.RADIO:
       return (
@@ -59,7 +62,6 @@ const RenderField = ({ field, props }: RenderFieldProps) => {
           </div>
         </RadioGroup>
       )
-      break
     case FieldType.SELECT:
       return (
         <Select>
@@ -78,7 +80,6 @@ const RenderField = ({ field, props }: RenderFieldProps) => {
           </SelectContent>
         </Select>
       )
-      break
     default:
       return <div>No Input Selected </div>
   }

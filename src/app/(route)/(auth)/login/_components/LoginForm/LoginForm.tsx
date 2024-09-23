@@ -10,10 +10,14 @@ import { FieldType } from '@/components/form/index.enum'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { loginFormSchema } from '@/lib/validation/loginValidation'
+import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
+  const router = useRouter()
+
   const onLoginSubmit = async (values: z.infer<typeof loginFormSchema>) => {
     console.log(values)
+    // handle normal login here
   }
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
@@ -23,6 +27,11 @@ const LoginForm = () => {
       password: ''
     }
   })
+
+  const handleGoogleLogin = async () => {
+    // Redirect user to the backend OAuth endpoint
+    window.location.href = 'http://localhost:3333/auth/google'
+  }
 
   return (
     <>
@@ -66,6 +75,16 @@ const LoginForm = () => {
                 Sign Up
               </Button>
             </Link>
+
+            <Button
+              type='button'
+              variant={'outline'}
+              size={'lg'}
+              className='w-full'
+              onClick={handleGoogleLogin}
+            >
+              Google Login
+            </Button>
           </div>
         </form>
       </Form>
